@@ -126,6 +126,8 @@ int main(int argc, char *argv[])
 
     debug = options.debug;
 
+    vout << "EPSG 4326 projection.\n";
+
     vout << "Writing to file '" << options.output_file << "'.\n";
 
     std::ofstream output(options.output_file);

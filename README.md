@@ -4,6 +4,8 @@
 OSMBorder extracts the admin boundary data from an OSM planet file and assembles
 all the pieces into linestrings for use in map renderers etc.
 
+**This fork changed to produce output in 4326 projection.**
+
 ## Prerequisites
 
 ### Libosmium
@@ -61,7 +63,7 @@ CREATE TABLE osmborder_lines (
   dividing_line bool,
   disputed bool,
   maritime bool,
-  way Geometry(LineString, 3857));
+  way Geometry(LineString, 4326));
 \copy osmborder_lines FROM osmborder_lines.csv
 
 CREATE INDEX osmborder_lines_way_idx ON osmborder_lines USING gist (way) WITH (fillfactor=100);
@@ -100,5 +102,5 @@ OSMBorder is available under the GNU GPL version 3 or later.
 
 ## Authors
 
-Paul Norman (penorman@mac.com)  
+Paul Norman (penorman@mac.com)
 Based on OSMCoastline by Jochen Topf (jochen@topf.org)
